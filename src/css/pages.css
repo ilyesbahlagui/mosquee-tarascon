@@ -1,0 +1,384 @@
+/* 
+ * Pages CSS - Styles spéci#projet .content-text h3,
+#projet .content-text h4,
+#projet .content-text p,
+#projet .content-text .objectives-list,
+#projet .content-text .features-list {
+    text-align: center;
+} aux pages
+ * Ajustements et styles particuliers pour certaines sections
+ */
+
+/* === AJUSTEMENTS SECTION ACCUEIL === */
+
+
+
+/* === SECTION PROJET === */
+#projet {
+    position: relative;
+}
+
+#projet .content-grid {
+    position: relative;
+}
+
+#projet .content-text {
+    padding: var(--space-lg);
+    text-align: center;
+}
+
+#projet .content-text h3,
+#projet .content-text h4,
+#projet .content-text p,
+#projet .content-text .objectives-list,
+#projet .content-text .features-list {
+    text-align: center;
+}
+
+#projet .objectives-list {
+    list-style: none;
+    padding: 0;
+}
+
+#projet .project-stats {
+    text-align: center;
+}
+
+#projet .objectives-list li {
+    transition: color var(--transition-fast);
+}
+
+#projet .objectives-list li:hover {
+    color: var(--text);
+}
+
+/* === SECTION FINANCEMENT === */
+#financement {
+    background: linear-gradient(135deg, var(--light) 0%, rgba(248, 249, 250, 0.8) 100%);
+}
+
+#financement .funding-progress {
+    background-color: var(--white);
+    padding: var(--space-2xl);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+}
+
+#financement .funding-progress::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(25, 135, 84, 0.03) 0%, transparent 70%);
+    z-index: 1;
+}
+
+#financement .funding-progress > * {
+    position: relative;
+    z-index: 2;
+}
+
+/* Animation du compteur au chargement */
+.counter-current {
+    transition: all 0.3s ease-out;
+}
+
+.counter-animate {
+    transform: scale(1.1);
+}
+
+/* === SECTION GALERIE === */
+#galerie {
+    position: relative;
+}
+
+#galerie .gallery-grid {
+    perspective: 1000px;
+}
+
+#galerie .gallery-item {
+    transform-style: preserve-3d;
+    transition: all var(--transition-slow);
+}
+
+#galerie .gallery-item:nth-child(even) {
+    transform: rotateY(1deg);
+}
+
+#galerie .gallery-item:nth-child(odd) {
+    transform: rotateY(-1deg);
+}
+
+/* Effets hover uniquement sur desktop */
+@media (min-width: 1025px) {
+    #galerie .gallery-item:hover {
+        transform: rotateY(0deg) translateY(-8px);
+    }
+}
+
+/* Effet de chargement pour les images */
+.gallery-item img {
+    opacity: 0;
+    transition: opacity var(--transition-normal);
+}
+
+.gallery-item img.loaded {
+    opacity: 1;
+}
+
+/* === SECTION CONTACT === */
+#contact {
+    background: var(--white);
+    position: relative;
+}
+
+#contact::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent 0%, var(--primary) 50%, transparent 100%);
+}
+
+#contact .contact-item {
+    transition: all var(--transition-normal);
+}
+
+#contact .contact-item:hover {
+    transform: translateY(-2px);
+    border-color: var(--primary);
+}
+
+/* === SECTIONS OPTIONNELLES (COMMENTÉES) === */
+/*
+#histoire {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+#histoire .content-text {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    font-size: var(--font-size-lg);
+    line-height: var(--line-height-relaxed);
+}
+
+#transparence {
+    padding: var(--space-4xl) 0;
+}
+
+.expenses-table {
+    background-color: var(--white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+}
+
+.expenses-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.expenses-table th,
+.expenses-table td {
+    padding: var(--space-md);
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+}
+
+.expenses-table th {
+    background-color: var(--light);
+    font-weight: var(--font-weight-semibold);
+    color: var(--text);
+}
+
+.expenses-table tbody tr:hover {
+    background-color: var(--light);
+}
+
+#chantier .construction-timeline {
+    position: relative;
+    padding-left: var(--space-xl);
+}
+
+#chantier .construction-timeline::before {
+    content: '';
+    position: absolute;
+    left: var(--space-md);
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background-color: var(--primary);
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: var(--space-xl);
+    padding-left: var(--space-xl);
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -6px;
+    top: var(--space-sm);
+    width: 12px;
+    height: 12px;
+    background-color: var(--primary);
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px var(--white);
+}
+
+.timeline-date {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    color: var(--primary);
+    margin-bottom: var(--space-xs);
+}
+
+.timeline-content {
+    color: var(--text-light);
+    font-size: var(--font-size-base);
+}
+*/
+
+/* === RESPONSIVE AJUSTEMENTS === */
+@media (max-width: 575px) {
+    .section {
+        padding: var(--space-3xl) 0;
+    }
+    
+    .section-header {
+        margin-bottom: var(--space-2xl);
+    }
+    
+    .section-header h2 {
+        font-size: var(--font-size-2xl);
+    }
+    
+    #financement .funding-progress {
+        padding: var(--space-lg);
+    }
+    
+    .counter-display {
+        font-size: var(--font-size-2xl);
+    }
+    
+    .bank-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--space-xs);
+    }
+    
+    .bank-row .value {
+        text-align: left;
+    }
+}
+
+@media (max-width: 767px) {
+    .content-grid {
+        gap: var(--space-2xl);
+    }
+    
+    .funding-info {
+        gap: var(--space-lg);
+    }
+    
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .contact-info {
+        gap: var(--space-lg);
+    }
+}
+
+/* === DARK MODE PREPARATION === */
+@media (prefers-color-scheme: dark) {
+    /* Préparation pour un futur mode sombre */
+    /* Actuellement désactivé pour ce projet */
+}
+
+/* === PRINT STYLES === */
+@media print {
+    .header,
+    .navbar-toggle,
+    .btn,
+    .lightbox,
+    .footer {
+        display: none !important;
+    }
+    
+    body {
+        padding-top: 0;
+        background: white !important;
+        color: black !important;
+    }
+    
+    .section {
+        page-break-inside: avoid;
+        padding: 1rem 0;
+    }
+    
+    .hero {
+        min-height: auto;
+        padding: 2rem 0;
+    }
+    
+    .hero-title {
+        color: black !important;
+    }
+}
+
+/* === STATES ET INTERACTIONS === */
+.is-loading {
+    cursor: wait;
+    opacity: 0.7;
+}
+
+.has-error {
+    border-color: var(--danger) !important;
+    box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.25) !important;
+}
+
+.is-success {
+    border-color: var(--success) !important;
+    box-shadow: 0 0 0 3px rgba(25, 135, 84, 0.25) !important;
+}
+
+/* === ACCESSIBILITY === */
+@media (prefers-reduced-motion: reduce) {
+    .progress-fill::after {
+        animation: none;
+    }
+    
+    .gallery-item,
+    .contact-item,
+    .btn {
+        transition: none !important;
+    }
+    
+    .hero-title,
+    .hero-subtitle,
+    .hero-description {
+        animation: none !important;
+    }
+}
+
+/* Pour les lecteurs d'écran */
+.sr-only:not(:focus):not(:active) {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+}
