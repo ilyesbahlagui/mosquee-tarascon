@@ -1,3 +1,4 @@
+
 /* 
  * Counter JS - Animation du compteur de financement avec API
  * Récupère les données réelles depuis l'API
@@ -15,7 +16,7 @@
     let counterElement = null;
     let progressBar = null;
     let currentAmount = 0;
-    let targetAmount = 5000000; // Objectif 5 000 000 €
+    let targetAmount = 500000; // Objectif 5 000 000 €
     let animationStarted = false;
     
     // Récupérer les données depuis l'API
