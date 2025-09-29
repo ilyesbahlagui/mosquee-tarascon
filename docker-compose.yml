@@ -3,8 +3,8 @@ services:
     image: nginx:alpine
     container_name: mosquee-tarascon
     volumes:
-      - /c/workspace/projet web/mosquee-tarascon:/usr/share/nginx/html:ro
-      - /c/workspace/projet web/mosquee-tarascon/default.conf:/etc/nginx/conf.d/default.conf:ro
+      - ~/workspace/mosquee-tarascon:/usr/share/nginx/html:ro
+      - ~/workspace/mosquee-tarascon/default.conf:/etc/nginx/conf.d/default.conf:ro
     ports:
       - "8081:80"
     restart: unless-stopped
