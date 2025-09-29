@@ -97,18 +97,6 @@
     transition: all var(--transition-normal);
 }
 
-.navbar-toggle.active span:nth-child(1) {
-    transform: rotate(135deg) translate(5px, 5px);
-}
-
-.navbar-toggle.active span:nth-child(2) {
-    opacity: 0;
-}
-
-.navbar-toggle.active span:nth-child(3) {
-    transform: rotate(-135deg) translate(7px, -6px);
-}
-
 .navbar-menu {
     position: fixed;
     top: 0;
@@ -186,13 +174,10 @@
     }
     
     .header {
-        height: 32px; /* Hauteur extrêmement réduite sur mobile */
+        height: 40px; /* Hauteur extrêmement réduite sur mobile */
     }
     
-    /* Cacher le bouton Faire un don du header sur mobile, car déjà présent dans le menu */
-    .header-donate-btn {
-        display: none;
-    }
+
 }
 
 /* Overlay pour menu mobile */
@@ -361,7 +346,7 @@
         position: relative;
         z-index: 3;
         text-align: center;
-        padding: var(--space-xl) var(--space-md);
+        padding: var(--space-lg) var(--space-sm);
         max-height: 60vh;
         display: flex;
         align-items: center;
@@ -401,8 +386,8 @@
     
     .hero-buttons {
         flex-direction: column;
-        gap: var(--space-sm);
-        margin-top: var(--space-sm);
+        gap: var(--space-xs);
+        margin-top: var(--space-xs);
         width: 100%;
         max-width: 90%;
         margin-left: auto;
@@ -1309,8 +1294,8 @@
 .section-subtitle {
     color: var(--text);
     font-size: var(--font-size-2xl);
-    margin-top: var(--space-2xl);
-    margin-bottom: var(--space-lg);
+    /* margin-top: var(--space-2xl);
+    margin-bottom: var(--space-lg); */
     text-align: center;
     position: relative;
     font-weight: var(--font-weight-semibold);
@@ -1631,6 +1616,10 @@
         padding: var(--space-md);
     }
     
+    .stat-number {
+        font-size: var(--font-size-xl);
+    }
+    
     .features-grid {
         grid-template-columns: 1fr;
         justify-items: center;
@@ -1721,7 +1710,46 @@
         width: 100%;
         max-width: 280px;
     }
+    
+    /* Réduction générale des espacements sur mobile */
+    .bank-info {
+        padding: var(--space-lg);
+    }
+    
+    .funding-progress {
+        margin-bottom: var(--space-xl);
+    }
+    
+    .vertical-grid {
+        gap: var(--space-lg);
+    }
 }
+
+/* Réduction générale des espacements pour améliorer la cohérence */
+@media (max-width: 480px) {
+    .hero-description {
+        margin-bottom: var(--space-sm);
+    }
+    
+    .hero-title {
+        margin-bottom: var(--space-xs);
+    }
+    
+    .hero-subtitle {
+        margin-bottom: var(--space-xs);
+    }
+    
+    /* Réduire les paddings des sections principales */
+    .bank-info {
+        padding: var(--space-md);
+    }
+    
+    .carousel-container {
+        padding: var(--space-xs);
+        margin: 0 var(--space-xs);
+    }
+}
+
 @keyframes fadeInUp {
     from {
         opacity: 0;
