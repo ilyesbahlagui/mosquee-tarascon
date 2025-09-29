@@ -1,5 +1,5 @@
 services:
-  monsite:
+  mosquee-tarascon:
     image: nginx:alpine
     container_name: mosquee-tarascon
     volumes:
