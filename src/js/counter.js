@@ -15,7 +15,7 @@
     let counterElement = null;
     let progressBar = null;
     let currentAmount = 0;
-    let targetAmount = 500000; // Objectif 500 000 €
+    let targetAmount = 5000000; // Objectif 5 000 000 €
     let animationStarted = false;
     
     // Récupérer les données depuis l'API
@@ -161,7 +161,7 @@
     function animateProgressBar() {
         if (!progressBar) return;
         
-        const percentage = Math.round((currentAmount / targetAmount) * 100);
+        const percentage = parseFloat(((currentAmount / targetAmount) * 100).toFixed(2));
         
         // Démarrer à 0% puis animer vers le pourcentage cible
         progressBar.style.width = '0%';
@@ -178,7 +178,7 @@
     function updateProgressBar() {
         if (!progressBar) return;
         
-        const percentage = Math.round((currentAmount / targetAmount) * 100);
+        const percentage = parseFloat(((currentAmount / targetAmount) * 100).toFixed(2));
         progressBar.style.width = `${percentage}%`;
         
         // Mettre à jour le texte de pourcentage
