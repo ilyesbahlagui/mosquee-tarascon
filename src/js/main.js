@@ -221,3 +221,24 @@
     start();
     
 })();
+
+/* -------------------------
+   Tracking des dons
+   ------------------------- */
+(function(){
+    'use strict';
+
+    // Tracking simple des clics sur les boutons de don (console + attribut data-analytics si besoin)
+    document.addEventListener('click', function(e){
+        const donateBtn = e.target.closest('.btn-donate, a.btn-primary.btn-large');
+        if (!donateBtn) return;
+        try {
+            const label = donateBtn.getAttribute('aria-label') || donateBtn.textContent.trim();
+            console.info('[Tracking] Donation click:', label);
+            // Possibilité d'ajouter un appel à un service analytics ici
+        } catch (err) {
+            // ignore
+        }
+    });
+
+})();

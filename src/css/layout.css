@@ -20,6 +20,17 @@ body {
     background-color: var(--white);
 }
 
+/* Main content - ajustement pour le header fixe */
+main {
+    padding-top: 35px; /* Compense la nouvelle hauteur réduite du header fixe */
+}
+
+@media (max-width: 768px) {
+    main {
+        padding-top: 32px; /* Hauteur très réduite sur mobile */
+    }
+}
+
 /* Container principal */
 .container {
     width: 100%;
@@ -55,7 +66,7 @@ body {
 
 /* Sections */
 .section {
-    padding: var(--space-4xl) 0;
+    padding: var(--space-3xl) 0;  /* Espacement modéré entre sections */
 }
 
 .section-light {
@@ -64,20 +75,47 @@ body {
 
 .section-header {
     text-align: center;
-    margin-bottom: var(--space-3xl);
+    margin-bottom: var(--space-xl); /* Réduction de l'espacement */
+    position: relative;
+    padding-bottom: var(--space-md); /* Légère réduction du padding */
 }
 
 .section-header h2 {
     font-size: var(--font-size-3xl);
     font-weight: var(--font-weight-bold);
-    color: var(--text);
+    color: #2d3748;
     margin-bottom: var(--space-md);
+    position: relative;
+}
+
+.section-header::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 4px;
+    background-color: #4299e1;
+    border-radius: 2px;
+}
+
+/* Style spécial pour le header principal de la section projet */
+.main-project-header h2 {
+    font-size: var(--font-size-4xl);
+}
+
+.main-project-header::after {
+    width: 140px;
+    height: 4px;
 }
 
 .section-header p {
     font-size: var(--font-size-lg);
     color: var(--text-light);
     max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
     margin: 0 auto;
 }
 
