@@ -1,6 +1,6 @@
 /* 
- * Counter JS - Animation du compteur de financement
- * Compteur progressif et barre de progression animée
+ * Counter JS - Animation du compteur de financement avec API
+ * Récupère les données réelles depuis l'API
  */
 
 (function() {
@@ -8,29 +8,60 @@
     
     // Configuration du compteur
     const ANIMATION_DURATION = 2000; // 2 secondes
-    const FRAME_RATE = 60; // 60fps
-    const UPDATE_INTERVAL = 1000 / FRAME_RATE;
+    const API_URL = 'https://leetchi-mosquee-tarascon.ib-app.fr/amount';
+    const UPDATE_INTERVAL = 60000; // 1 minute
     
     // Variables du compteur
     let counterElement = null;
     let progressBar = null;
     let currentAmount = 0;
-    let targetAmount = 0;
+    let targetAmount = 500000; // Objectif 500 000 €
     let animationStarted = false;
     
+    // Récupérer les données depuis l'API
+    async function fetchCounterData() {
+        try {
+            const response = await fetch(API_URL);
+            if (!response.ok) {
+                throw new Error(`HTTP ${response.status}`);
+            }
+            const data = await response.json();
+            
+            if (data.ok && data.amount) {
+                return Math.round(data.amount);
+            }
+            throw new Error('Données invalides');
+        } catch (error) {
+            console.warn('Erreur API:', error.message);
+            // Fallback sur 0 si l'API ne répond pas
+            return currentAmount || 0;
+        }
+    }
+    
     // Initialiser le compteur
-    function initCounter() {
-        counterElement = document.querySelector('.progress-counter');
+    async function initCounter() {
+        counterElement = document.querySelector('.counter-current');
         progressBar = document.querySelector('.progress-fill');
         
         if (!counterElement) return;
         
-        // Récupérer les valeurs depuis les data-attributes
-        currentAmount = parseInt(counterElement.dataset.current) || 0;
-        targetAmount = parseInt(counterElement.dataset.target) || 100000;
+        // Récupérer et afficher immédiatement la valeur de l'API
+        currentAmount = await fetchCounterData();
         
-        // Configurer l'observation pour déclencher l'animation
-        setupIntersectionObserver();
+        // Afficher directement sans animation
+        displayCurrentValue();
+        updateProgressBar();
+        
+        // Démarrer les mises à jour automatiques
+        startAutoUpdate();
+    }
+    
+    // Afficher la valeur actuelle
+    function displayCurrentValue() {
+        const counterDisplay = document.querySelector('.counter-current');
+        if (counterDisplay) {
+            counterDisplay.textContent = formatNumber(currentAmount);
+        }
     }
     
     // Configuration de l'observer pour déclencher l'animation au scroll
@@ -67,6 +98,30 @@
         
         // Ajouter les effets visuels
         addCounterEffects();
+    }
+    
+    // Démarrer les mises à jour automatiques
+    function startAutoUpdate() {
+        // Mise à jour toutes les minutes (pas besoin immédiate car déjà fait dans init)
+        setInterval(updateFromAPI, UPDATE_INTERVAL);
+    }
+    
+    // Mettre à jour depuis l'API
+    async function updateFromAPI() {
+        const newAmount = await fetchCounterData();
+        
+        if (newAmount !== currentAmount) {
+            const oldAmount = currentAmount;
+            currentAmount = newAmount;
+            
+            // Afficher directement la nouvelle valeur
+            displayCurrentValue();
+            
+            // Mettre à jour la barre de progression
+            updateProgressBar();
+            
+            console.log(`Compteur mis à jour: ${oldAmount} → ${newAmount} €`);
+        }
     }
     
     // Animation du compteur numérique
@@ -114,6 +169,28 @@
         setTimeout(() => {
             progressBar.style.width = `${percentage}%`;
         }, 100);
+        
+        // Mettre à jour le texte de pourcentage
+        updatePercentageText(percentage);
+    }
+    
+    // Mettre à jour la barre de progression (sans animation initiale)
+    function updateProgressBar() {
+        if (!progressBar) return;
+        
+        const percentage = Math.round((currentAmount / targetAmount) * 100);
+        progressBar.style.width = `${percentage}%`;
+        
+        // Mettre à jour le texte de pourcentage
+        updatePercentageText(percentage);
+    }
+    
+    // Mettre à jour le texte de pourcentage
+    function updatePercentageText(percentage) {
+        const progressText = document.querySelector('.progress-text');
+        if (progressText) {
+            progressText.textContent = `${percentage}% de l'objectif atteint`;
+        }
     }
     
     // Ajouter des effets visuels pendant l'animation
@@ -239,6 +316,8 @@
         animateToNewValue,
         startCounterAnimation,
         formatNumber,
+        fetchCounterData,
+        updateFromAPI,
         getCurrentAmount: () => currentAmount,
         getTargetAmount: () => targetAmount
     };
