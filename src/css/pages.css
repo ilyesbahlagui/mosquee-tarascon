@@ -4,6 +4,9 @@
  */
 
 /* === AJUSTEMENTS SECTION ACCUEIL === */
+#accueil .hero-image img {
+    object-position: 80% center; /* Ajuste la position pour centrer le Coran */
+}
 
 
 
@@ -217,51 +220,12 @@
     background-color: var(--light);
 }
 
-#chantier .construction-timeline {
-    position: relative;
-    padding-left: var(--space-xl);
+/* Section chantier styles spécifiques */
+#chantier .timeline {
+    margin-top: var(--space-2xl);
 }
 
-#chantier .construction-timeline::before {
-    content: '';
-    position: absolute;
-    left: var(--space-md);
-    top: 0;
-    bottom: 0;
-    width: 2px;
-    background-color: var(--primary);
-}
-
-.timeline-item {
-    position: relative;
-    margin-bottom: var(--space-xl);
-    padding-left: var(--space-xl);
-}
-
-.timeline-item::before {
-    content: '';
-    position: absolute;
-    left: -6px;
-    top: var(--space-sm);
-    width: 12px;
-    height: 12px;
-    background-color: var(--primary);
-    border-radius: 50%;
-    box-shadow: 0 0 0 4px var(--white);
-}
-
-.timeline-date {
-    font-size: var(--font-size-sm);
-    font-weight: var(--font-weight-semibold);
-    color: var(--primary);
-    margin-bottom: var(--space-xs);
-}
-
-.timeline-content {
-    color: var(--text-light);
-    font-size: var(--font-size-base);
-}
-*/
+/* Fin des styles spécifiques au chantier */
 
 /* === RESPONSIVE AJUSTEMENTS === */
 @media (max-width: 575px) {
@@ -342,57 +306,14 @@
     }
     
     .hero {
-        min-height: auto;
+        max-height: none;
         padding: 2rem 0;
     }
     
     .hero-title {
         color: black !important;
+        font-size: 18pt;
     }
 }
 
-/* === STATES ET INTERACTIONS === */
-.is-loading {
-    cursor: wait;
-    opacity: 0.7;
-}
-
-.has-error {
-    border-color: var(--danger) !important;
-    box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.25) !important;
-}
-
-.is-success {
-    border-color: var(--success) !important;
-    box-shadow: 0 0 0 3px rgba(25, 135, 84, 0.25) !important;
-}
-
-/* === ACCESSIBILITY === */
-@media (prefers-reduced-motion: reduce) {
-    .progress-fill::after {
-        animation: none;
-    }
-    
-    .gallery-item,
-    .contact-item,
-    .btn {
-        transition: none !important;
-    }
-    
-    .hero-title,
-    .hero-subtitle,
-    .hero-description {
-        animation: none !important;
-    }
-}
-
-/* Pour les lecteurs d'écran */
-.sr-only:not(:focus):not(:active) {
-    clip: rect(0 0 0 0);
-    clip-path: inset(50%);
-    height: 1px;
-    overflow: hidden;
-    position: absolute;
-    white-space: nowrap;
-    width: 1px;
-}
+/* Les classes d'états, d'interactions et d'accessibilité ont été déplacées vers components.css */

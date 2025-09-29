@@ -88,17 +88,6 @@ main {
     position: relative;
 }
 
-.section-header::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 120px;
-    height: 4px;
-    background-color: #4299e1;
-    border-radius: 2px;
-}
 
 /* Style spécial pour le header principal de la section projet */
 .main-project-header h2 {

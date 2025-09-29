@@ -32,6 +32,7 @@
                     <h1>🕌 Mosquée de Tarascon</h1>
                 </div>
                 
+             
                 <!-- Menu Toggle pour Mobile -->
                 <button class="navbar-toggle" id="navbar-toggle" aria-label="Ouvrir le menu">
                     <span></span>
@@ -42,15 +43,15 @@
                 <!-- Navigation -->
                 <ul class="navbar-menu" id="navbar-menu">
                     <li><a href="#accueil" class="nav-link active">Accueil</a></li>
-                    <li><a href="#projet" class="nav-link">Le Projet</a></li>
+                    <li><a href="#presentation" class="nav-link">Le Projet</a></li>
                     <li><a href="#financement" class="nav-link">Financement</a></li>
                     <li><a href="#galerie" class="nav-link">Galerie</a></li>
                     <li><a href="#contact" class="nav-link">Contact</a></li>
-                    <li>
+                    <!-- <li>
                         <a class="nav-link btn btn-donate" href="https://www.leetchi.com/fr/c/mosquee-de-tarascon-1645740?utm_source=whatsapp&utm_medium=social_sharing#MoneyPot--Messages" target="_blank" rel="noopener noreferrer" aria-label="Faire un don">
                             Faire un don
                         </a>
-                    </li>
+                    </li> -->
                     <!-- Sections optionnelles commentées -->
                     <!-- <li><a href="#histoire" class="nav-link">Histoire</a></li> -->
                     <!-- <li><a href="#transparence" class="nav-link">Transparence</a></li> -->
@@ -73,14 +74,15 @@
                             Ensemble, construisons un lieu de prière, de rencontre et d'échange 
                             pour notre communauté. Rejoignez-nous dans cette belle aventure.
                         </p>
-                        <a href="#projet" class="btn btn-primary btn-large animate-scale-in">
-                            Découvrir le projet
+                        <a class="nav-link btn btn-donate" href="https://www.leetchi.com/fr/c/mosquee-de-tarascon-1645740?utm_source=whatsapp&utm_medium=social_sharing#MoneyPot--Messages" target="_blank" rel="noopener noreferrer" aria-label="Faire un don">
+                            Faire un don
                         </a>
+                        
                     </div>
                 </div>
             </div>
             <div class="hero-image">
-                <img src="https://images.pexels.com/photos/1379089/pexels-photo-1379089.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600&fit=crop" 
+                <img src="src/images/header.jpg" 
                      loading="lazy">
             </div>
         </section>
@@ -108,7 +110,8 @@
         <section id="projet" class="section">
             <div class="container">
                 <div class="section-header scroll-animate main-project-header">
-                    <h2>Le Projet</h2>
+                    <!-- <h2>Le Projet</h2> -->
+                        <h3 class="section-subtitle">Le Projet</h3>
                     <p>Une mosquée moderne et accueillante pour tous</p>
                 </div>
                 
@@ -116,7 +119,7 @@
                     <!-- Plans architecturaux avec présentation soignée -->
                     <div class="content-image scroll-animate project-image-elegant">
                         <div class="plan-wrapper">
-                            <img src="https://images.pexels.com/photos/6373478/pexels-photo-6373478.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" 
+                            <img src="src/images/plan.png" 
                                  alt="Plans architecturaux et croquis de la mosquée" 
                                  loading="lazy">
                             <div class="image-caption">
@@ -212,7 +215,7 @@
         </section>
 
         <!-- Section Timeline -->
-        <section class="section section-light">
+        <!-- <section class="section section-light">
             <div class="container">
                 <div class="section-header scroll-animate">
                     <h2>Avancement du Projet</h2>
@@ -275,7 +278,7 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> -->
 
         <!-- Section Financement -->
         <section id="financement" class="section section-light">
@@ -357,7 +360,7 @@
         </section>
 
         <!-- Section Témoignages -->
-        <section class="section">
+        <!-- <section class="section">
             <div class="container">
                 <div class="section-header scroll-animate">
                     <h2>Témoignages</h2>
@@ -402,7 +405,7 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> -->
 
         <!-- Section Galerie -->
         <section id="galerie" class="section">
@@ -416,7 +419,38 @@
                 <div class="carousel-container scroll-animate" id="gallery-carousel">
                     <div class="carousel-wrapper">
                         <div class="carousel-track" id="carousel-track">
+                            <!-- Images existantes (pexels) -->
                             <div class="gallery-item">
+                                <img src="src/images/entrepot.png"
+                                     alt="Vue extérieure de l'entrepôt de 700m² sur le terrain de la future mosquée"
+                                     data-full="src/images/photo1.jpg"
+                                     loading="lazy">
+                                <div class="gallery-overlay">
+                                    <h4>L'entrepôt (700&nbsp;m²)</h4>
+                                    <p>Bâtiment principal à transformer en salle de prière<br>Situé sur un terrain de 5&nbsp;900&nbsp;m²</p>
+                                </div>
+                            </div>
+                            <div class="gallery-item">
+                                <img src="src/images/maison.png"
+                                     alt="Maison existante de 400m² à rénover"
+                                     data-full="src/images/photo2.jpg"
+                                     loading="lazy">
+                                <div class="gallery-overlay">
+                                    <h4>Maison à rénover (400&nbsp;m²)</h4>
+                                    <p>Futur espace éducatif et social<br>À rénover pour la communauté</p>
+                                </div>
+                            </div>
+                            <div class="gallery-item">
+                                <img src="src/images/plan.png"
+                                     alt="Plan architectural du projet de mosquée sur 5 900m²"
+                                     data-full="src/images/photo3.jpg"
+                                     loading="lazy">
+                                <div class="gallery-overlay">
+                                    <h4>Plan du projet</h4>
+                                    <p>Conception architecturale sur 5&nbsp;900&nbsp;m²<br>Inclut entrepôt, maison et espaces extérieurs</p>
+                                </div>
+                            </div>
+                            <!-- <div class="gallery-item">
                                 <img src="https://images.pexels.com/photos/1379089/pexels-photo-1379089.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" 
                                      alt="Mosquée moderne avec minaret et dôme"
                                      data-full="https://images.pexels.com/photos/1379089/pexels-photo-1379089.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop"
@@ -426,7 +460,6 @@
                                     <p>Inspiration pour notre projet</p>
                                 </div>
                             </div>
-                            
                             <div class="gallery-item">
                                 <img src="https://images.pexels.com/photos/6373478/pexels-photo-6373478.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" 
                                      alt="Plans architecturaux et blueprints"
@@ -437,7 +470,6 @@
                                     <p>Conception architecturale</p>
                                 </div>
                             </div>
-                            
                             <div class="gallery-item">
                                 <img src="https://images.pexels.com/photos/3764958/pexels-photo-3764958.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" 
                                      alt="Terrain de construction préparé"
@@ -502,7 +534,7 @@
                                     <h4>Chantier en cours</h4>
                                     <p>Progression des travaux</p>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                     
