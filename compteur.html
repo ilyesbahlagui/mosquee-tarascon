@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compteur de Dons - Mosquée de Tarascon</title>
+    <link rel="stylesheet" href="/src/css/pages-compteur.css">
+</head>
+<body>
+    <div class="particles-container" id="particles"></div>
+    
+    <div class="counter-container">
+        <div class="mosque-icon">🕌</div>
+        
+        <h1 class="title">Mosquée de Tarascon</h1>
+        <p class="subtitle">Ensemble, construisons notre lieu de prière</p>
+        
+        <div class="amount-display">
+            <div class="currency">€</div>
+            <div class="amount" id="amount">0</div>
+        </div>
+        
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill"></div>
+                <div class="progress-glow"></div>
+            </div>
+            <div class="progress-labels">
+                <span class="current-amount" id="current-display">0 €</span>
+                <span class="target-amount">500 000 €</span>
+            </div>
+        </div>
+        
+        <div class="percentage" id="percentage">0%</div>
+        
+        <div class="last-update">
+            Dernière mise à jour : <span id="last-update">--:--</span>
+        </div>
+    </div>
+    
+    <script src="src/js/pages-compteur.js"></script>
+</body>
+</html>

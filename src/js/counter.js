@@ -103,7 +103,7 @@
     
     // Démarrer les mises à jour automatiques
     function startAutoUpdate() {
-        // Mise à jour toutes les minutes (pas besoin immédiate car déjà fait dans init)
+        // Mise à jour toutes les minutes 
         setInterval(updateFromAPI, UPDATE_INTERVAL);
     }
     
