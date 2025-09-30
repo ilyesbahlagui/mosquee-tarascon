@@ -2,127 +2,168 @@
 
 // ========================= CAROUSEL START =========================
 document.addEventListener('DOMContentLoaded', function() {
-    const carousel = {
-        track: document.getElementById('carousel-track'),
-        prevBtn: document.getElementById('carousel-prev'),
-        nextBtn: document.getElementById('carousel-next'),
-        dotsContainer: document.getElementById('carousel-dots'),
-        slides: [],
-        currentIndex: 0,
-        slidesPerView: 3,
-        totalSlides: 0,
 
-        init() {
-            if (!this.track) return;
-            
-            this.slides = Array.from(this.track.querySelectorAll('.carousel-slide'));
-            this.totalSlides = this.slides.length;
-            
-            this.updateSlidesPerView();
-            this.createDots();
-            this.bindEvents();
-            this.updateCarousel();
-            
-            window.addEventListener('resize', () => {
+    // Fonction pour initialiser un carousel indépendant
+    function initCarousel({
+        trackId,
+        prevBtnId,
+        nextBtnId,
+        dotsId,
+        containerId,
+        lightboxGroup
+    }) {
+        const carousel = {
+            track: document.getElementById(trackId),
+            prevBtn: document.getElementById(prevBtnId),
+            nextBtn: document.getElementById(nextBtnId),
+            dotsContainer: document.getElementById(dotsId),
+            container: containerId ? document.getElementById(containerId) : null,
+            slides: [],
+            currentIndex: 0,
+            slidesPerView: 3,
+            totalSlides: 0,
+            lightboxGroup: lightboxGroup,
+
+            init() {
+                if (!this.track) return;
+                this.slides = Array.from(this.track.querySelectorAll('.carousel-slide'));
+                this.totalSlides = this.slides.length;
                 this.updateSlidesPerView();
+                this.createDots();
+                this.bindEvents();
                 this.updateCarousel();
-            });
-        },
-
-        updateSlidesPerView() {
-            const width = window.innerWidth;
-            if (width <= 768) {
-                this.slidesPerView = 1;
-            } else if (width <= 1024) {
-                this.slidesPerView = 2;
-            } else {
-                this.slidesPerView = 3;
-            }
-        },
-
-        createDots() {
-            if (!this.dotsContainer) return;
-            
-            this.dotsContainer.innerHTML = '';
-            const maxIndex = Math.max(0, this.totalSlides - this.slidesPerView);
-            const totalDots = maxIndex + 1;
-            
-            for (let i = 0; i < totalDots; i++) {
-                const dot = document.createElement('button');
-                dot.className = 'carousel-dot';
-                dot.setAttribute('aria-label', `Aller à la slide ${i + 1}`);
-                dot.addEventListener('click', () => this.goToSlide(i));
-                this.dotsContainer.appendChild(dot);
-            }
-        },
-
-        bindEvents() {
-            if (this.prevBtn) {
-                this.prevBtn.addEventListener('click', () => this.prevSlide());
-            }
-            
-            if (this.nextBtn) {
-                this.nextBtn.addEventListener('click', () => this.nextSlide());
-            }
-
-            // Add click event to slides for lightbox
-            this.slides.forEach((slide, index) => {
-                slide.addEventListener('click', () => {
-                    lightbox.open(index);
+                window.addEventListener('resize', () => {
+                    this.updateSlidesPerView();
+                    this.updateCarousel();
                 });
-            });
+            },
+
+
+            updateSlidesPerView() {
+                const width = window.innerWidth;
+                if (width <= 768) {
+                    this.slidesPerView = 1;
+                } else if (width <= 1024) {
+                    this.slidesPerView = 2;
+                } else {
+                    this.slidesPerView = 3;
+                }
+                // Correction : recalcule le nombre de dots et ajuste l’index si besoin
+                const maxIndex = Math.max(0, this.totalSlides - this.slidesPerView);
+                if (this.currentIndex > maxIndex) {
+                    this.currentIndex = maxIndex;
+                }
+                this.createDots();
+            },
+
+            createDots() {
+                if (!this.dotsContainer) return;
+                this.dotsContainer.innerHTML = '';
+                const maxIndex = Math.max(0, this.totalSlides - this.slidesPerView);
+                const totalDots = maxIndex + 1;
+                for (let i = 0; i < totalDots; i++) {
+                    const dot = document.createElement('button');
+                    dot.className = 'carousel-dot';
+                    dot.setAttribute('aria-label', `Aller à la slide ${i + 1}`);
+                    dot.addEventListener('click', () => {
+                        this.goToSlide(i);
+                    });
+                    this.dotsContainer.appendChild(dot);
+                }
+                // Correction : met à jour l’état actif après création
+                this.updateDots();
+            },
+
+            bindEvents() {
+                if (this.prevBtn) {
+                    this.prevBtn.addEventListener('click', () => this.prevSlide());
+                }
+                if (this.nextBtn) {
+                    this.nextBtn.addEventListener('click', () => this.nextSlide());
+                }
+                // Click sur slide : n'ouvre que le lightbox du bon groupe
+                this.slides.forEach((slide, index) => {
+                    slide.addEventListener('click', () => {
+                        if (typeof lightbox !== 'undefined' && lightbox.openGroup) {
+                            lightbox.openGroup(this.lightboxGroup, index);
+                        }
+                    });
+                });
+            },
+
+            prevSlide() {
+                this.currentIndex = this.currentIndex <= 0 
+                    ? this.totalSlides - this.slidesPerView 
+                    : this.currentIndex - 1;
+                this.updateCarousel();
+            },
+
+            nextSlide() {
+                this.currentIndex = this.currentIndex >= this.totalSlides - this.slidesPerView 
+                    ? 0 
+                    : this.currentIndex + 1;
+                this.updateCarousel();
+            },
+
+            goToSlide(index) {
+                const maxIndex = Math.max(0, this.totalSlides - this.slidesPerView);
+                this.currentIndex = Math.max(0, Math.min(index, maxIndex));
+                this.updateCarousel();
+            },
+
+            updateCarousel() {
+                if (!this.track) return;
+                const maxIndex = Math.max(0, this.totalSlides - this.slidesPerView);
+                if (this.currentIndex > maxIndex) {
+                    this.currentIndex = maxIndex;
+                }
+                const slideWidth = 100 / this.slidesPerView;
+                const translateX = -(this.currentIndex * slideWidth);
+                this.track.style.transform = `translateX(${translateX}%)`;
+                this.slides.forEach(slide => {
+                    slide.style.flexBasis = `${slideWidth}%`;
+                });
+                this.updateDots();
+            },
+
+            updateDots() {
+                const dots = this.dotsContainer?.querySelectorAll('.carousel-dot');
+                if (!dots) return;
+                const maxIndex = Math.max(0, this.totalSlides - this.slidesPerView);
+                const currentDotIndex = Math.min(this.currentIndex, maxIndex);
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentDotIndex);
+                });
+            }
+        };
+        carousel.init();
+        return carousel;
+    }
+
+    // Initialisation de chaque carousel indépendant
+    const carousels = [
+        {
+            trackId: 'carousel-track-plans',
+            prevBtnId: 'carousel-prev-plans',
+            nextBtnId: 'carousel-next-plans',
+            dotsId: 'carousel-dots-plans',
+            containerId: 'carousel-container-plans',
+            lightboxGroup: 'plans'
         },
-
-        prevSlide() {
-            this.currentIndex = this.currentIndex <= 0 
-                ? this.totalSlides - this.slidesPerView 
-                : this.currentIndex - 1;
-            this.updateCarousel();
-        },
-
-        nextSlide() {
-            this.currentIndex = this.currentIndex >= this.totalSlides - this.slidesPerView 
-                ? 0 
-                : this.currentIndex + 1;
-            this.updateCarousel();
-        },
-
-        goToSlide(index) {
-            this.currentIndex = Math.max(0, Math.min(index, this.totalSlides - this.slidesPerView));
-            this.updateCarousel();
-        },
-
-        updateCarousel() {
-            if (!this.track) return;
-            
-            const slideWidth = 100 / this.slidesPerView;
-            const translateX = -(this.currentIndex * slideWidth);
-            
-            this.track.style.transform = `translateX(${translateX}%)`;
-            
-            // Update slides flex-basis
-            this.slides.forEach(slide => {
-                slide.style.flexBasis = `${slideWidth}%`;
-            });
-
-            this.updateDots();
-        },
-
-        updateDots() {
-            const dots = this.dotsContainer?.querySelectorAll('.carousel-dot');
-            if (!dots) return;
-            
-            const maxIndex = Math.max(0, this.totalSlides - this.slidesPerView);
-            const totalDots = maxIndex + 1;
-            const currentDotIndex = Math.min(this.currentIndex, maxIndex);
-            
-            dots.forEach((dot, index) => {
-                dot.classList.toggle('active', index === currentDotIndex);
-            });
+        {
+            trackId: 'carousel-track-galerie',
+            prevBtnId: 'carousel-prev-galerie',
+            nextBtnId: 'carousel-next-galerie',
+            dotsId: 'carousel-dots-galerie',
+            containerId: 'carousel-container-galerie',
+            lightboxGroup: 'galerie'
         }
-    };
+    ];
 
-    // Lightbox functionality
+    const carouselInstances = carousels.map(initCarousel);
+
+
+    // Lightbox multi-groupe : chaque carousel n’ouvre que ses images
     const lightbox = {
         element: document.getElementById('lightbox'),
         image: document.getElementById('lightbox-image'),
@@ -133,17 +174,11 @@ document.addEventListener('DOMContentLoaded', function() {
         overlay: null,
         currentIndex: 0,
         images: [],
+        group: null,
 
         init() {
             if (!this.element) return;
-            
             this.overlay = this.element.querySelector('.lightbox-overlay');
-            this.images = Array.from(document.querySelectorAll('.carousel-image')).map(img => ({
-                src: img.src,
-                alt: img.alt,
-                caption: img.parentElement.querySelector('.slide-caption')?.textContent || img.alt
-            }));
-            
             this.bindEvents();
         },
 
@@ -151,23 +186,18 @@ document.addEventListener('DOMContentLoaded', function() {
             if (this.closeBtn) {
                 this.closeBtn.addEventListener('click', () => this.close());
             }
-            
             if (this.overlay) {
                 this.overlay.addEventListener('click', () => this.close());
             }
-            
             if (this.prevBtn) {
                 this.prevBtn.addEventListener('click', () => this.prev());
             }
-            
             if (this.nextBtn) {
                 this.nextBtn.addEventListener('click', () => this.next());
             }
-
             // Keyboard navigation
             document.addEventListener('keydown', (e) => {
                 if (!this.element.classList.contains('active')) return;
-                
                 switch(e.key) {
                     case 'Escape':
                         this.close();
@@ -182,7 +212,21 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         },
 
-        open(index) {
+        // Ouvre le lightbox pour un groupe d’images (plans ou galerie)
+        openGroup(group, index) {
+            this.group = group;
+            // Sélectionne uniquement les images du bon carousel
+            let selector = '';
+            if (group === 'plans') {
+                selector = '#carousel-track-plans .carousel-image';
+            } else if (group === 'galerie') {
+                selector = '#carousel-track-galerie .carousel-image';
+            }
+            this.images = Array.from(document.querySelectorAll(selector)).map(img => ({
+                src: img.src,
+                alt: img.alt,
+                caption: img.parentElement.querySelector('.slide-caption')?.textContent || img.alt
+            }));
             this.currentIndex = index;
             this.updateContent();
             this.element.classList.add('active');
@@ -210,47 +254,44 @@ document.addEventListener('DOMContentLoaded', function() {
 
         updateContent() {
             if (!this.images[this.currentIndex]) return;
-            
             const currentImage = this.images[this.currentIndex];
-            
             if (this.image) {
                 this.image.src = currentImage.src;
                 this.image.alt = currentImage.alt;
             }
-            
             if (this.caption) {
                 this.caption.textContent = currentImage.caption;
             }
         }
     };
 
-    // Initialize carousel and lightbox
-    carousel.init();
+
+    // Initialiser le lightbox (inchangé)
     lightbox.init();
 
-    // Auto-play carousel (optional)
-    let autoplayInterval;
-    
-    function startAutoplay() {
-        autoplayInterval = setInterval(() => {
+    // Auto-play pour chaque carousel (optionnel)
+    let autoplayIntervals = [];
+    function startAutoplay(carouselInstance) {
+        return setInterval(() => {
             if (!lightbox.element.classList.contains('active')) {
-                carousel.nextSlide();
+                carouselInstance.nextSlide();
             }
         }, 5000);
     }
-    
-    function stopAutoplay() {
-        clearInterval(autoplayInterval);
+    function stopAutoplay(intervalId) {
+        clearInterval(intervalId);
     }
-
-    // Start autoplay
-    startAutoplay();
-
-    // Pause autoplay on hover
-    const carouselContainer = document.querySelector('.carousel-container');
-    if (carouselContainer) {
-        carouselContainer.addEventListener('mouseenter', stopAutoplay);
-        carouselContainer.addEventListener('mouseleave', startAutoplay);
-    }
+    // Démarrer l'autoplay pour chaque carousel
+    carouselInstances.forEach((carouselInstance, idx) => {
+        const intervalId = startAutoplay(carouselInstance);
+        autoplayIntervals.push(intervalId);
+        // Pause autoplay sur hover
+        if (carouselInstance.container) {
+            carouselInstance.container.addEventListener('mouseenter', () => stopAutoplay(intervalId));
+            carouselInstance.container.addEventListener('mouseleave', () => {
+                autoplayIntervals[idx] = startAutoplay(carouselInstance);
+            });
+        }
+    });
 });
 // ========================= CAROUSEL END =========================

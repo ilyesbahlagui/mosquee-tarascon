@@ -287,7 +287,6 @@
 /* === PRINT STYLES === */
 @media print {
     .header,
-    .navbar-toggle,
     .btn,
     .lightbox,
     .footer {

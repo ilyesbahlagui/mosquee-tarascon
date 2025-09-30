@@ -124,7 +124,7 @@
 
                 <div class="video-wrapper scroll-animate" style="margin-top:var(--space-lg); max-width: 800px;">
                     <div class="video-inner" style="padding-top: 0; height: auto;">
-                        <video controls poster="./src/images/entrepot.png"
+                        <video controls poster="./src/images/plan-complet.jpg"
                             style="position: relative; width: 100%; height: auto; max-height: 450px; border-radius: var(--radius-lg); box-shadow: var(--shadow-md);">
                             <source src="./src/media/projet-construction-mosquee-tarascon.mp4" type="video/mp4">
                             Votre navigateur ne prend pas en charge la lecture vidéo.
@@ -132,27 +132,51 @@
                     </div>
                 </div>
             </div>
-        </section>
 
-        <!-- Section Projet -->
-        <section id="projet" class="section">
-            <div class="container">
-                <div class="section-header scroll-animate main-project-header">
-                    <!-- <h2>Le Projet</h2> -->
-                    <h3 class="section-subtitle">Le Projet</h3>
-                    <p>Une mosquée moderne et accueillante pour tous</p>
-                </div>
+
+            <div id="projet" class="container">
 
                 <div class="">
-                    <!-- Plans architecturaux avec présentation soignée -->
-                    <div class="content-image scroll-animate project-image-elegant">
-                        <div class="plan-wrapper">
-                            <img src="src/images/plan.png" alt="Plans architecturaux et croquis de la mosquée"
-                                loading="lazy">
-                            <div class="image-caption">
-                                <p>Plans architecturaux de la future mosquée</p>
-                            </div>
+                    <!-- Plans architecturaux avec présentation -->
+                    <div class="carousel-section">
+                        <div class="section-header scroll-animate main-project-header">
+                            <!-- <h2>Le Projet</h2> -->
+                            <h3 class="section-subtitle">Plans architecturaux</h3>
+                            <p>Découvrez les plans architecturaux de la future mosquée.</p>
                         </div>
+                        <div class="carousel-container" id="carousel-container-plans">
+                            <button class="carousel-arrow carousel-prev" id="carousel-prev-plans"
+                                aria-label="Image précédente">
+                                ‹
+                            </button>
+
+                            <div class="carousel-wrapper">
+                                <div class="carousel-track" id="carousel-track-plans">
+                                    <div class="carousel-slide">
+                                        <img src="src/images/plan-1.jpg" alt="Plan architectural 1"
+                                            class="carousel-image">
+                                        <div class="slide-caption">Plan architectural 1</div>
+                                    </div>
+                                    <div class="carousel-slide">
+                                        <img src="src/images/plan-2.jpg" alt="Plan architectural 2"
+                                            class="carousel-image">
+                                        <div class="slide-caption">Plan architectural 2</div>
+                                    </div>
+                                    <div class="carousel-slide">
+                                        <img src="src/images/plan-3.jpg" alt="Plan architectural 3"
+                                            class="carousel-image">
+                                        <div class="slide-caption">Plan architectural 3</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button class="carousel-arrow carousel-next" id="carousel-next-plans"
+                                aria-label="Image suivante">
+                                ›
+                            </button>
+                        </div>
+
+                        <div class="carousel-dots" id="carousel-dots-plans"></div>
                     </div>
 
                     <!-- Contenu textuel ensuite -->
@@ -245,71 +269,7 @@
             </div>
         </section>
 
-        <!-- Section Timeline -->
-        <!-- <section class="section section-light">
-            <div class="container">
-                <div class="section-header scroll-animate">
-                    <h2>Avancement du Projet</h2>
-                    <p>Suivez l'évolution des travaux étape par étape</p>
-                </div>
-                
-                <div class="timeline">
-                    <div class="timeline-item completed scroll-animate">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <div class="timeline-date">Janvier 2024</div>
-                            <h4>Acquisition du terrain</h4>
-                            <p>Achat du terrain de 1200m² dans le centre-ville de Tarascon.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item completed scroll-animate">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <div class="timeline-date">Mars 2024</div>
-                            <h4>Dépôt du permis de construire</h4>
-                            <p>Validation des plans architecturaux et obtention du permis de construire.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item active scroll-animate">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <div class="timeline-date">Juillet 2024</div>
-                            <h4>Début des travaux</h4>
-                            <p>Préparation du terrain et coulage des fondations en cours.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item upcoming scroll-animate">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <div class="timeline-date">Octobre 2024</div>
-                            <h4>Structure et gros œuvre</h4>
-                            <p>Construction des murs porteurs et de la charpente.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item upcoming scroll-animate">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <div class="timeline-date">Février 2025</div>
-                            <h4>Finitions et aménagements</h4>
-                            <p>Installation des équipements et travaux de finition intérieure.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item upcoming scroll-animate">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <div class="timeline-date">Mai 2025</div>
-                            <h4>Inauguration</h4>
-                            <p>Ouverture officielle de la mosquée à la communauté.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section> -->
+
 
         <!-- Section Financement -->
         <section id="financement" class="section section-light">
@@ -395,167 +355,64 @@
             </div>
         </section>
 
-        <!-- Section Témoignages -->
-        <!-- <section class="section">
-            <div class="container">
-                <div class="section-header scroll-animate">
-                    <h2>Témoignages</h2>
-                    <p>Ils soutiennent notre projet</p>
-                </div>
-                
-                <div class="testimonials-grid">
-                    <div class="testimonial-item scroll-animate">
-                        <div class="testimonial-content">
-                            <p>"Ce projet représente un véritable symbole d'unité pour notre ville. Une mosquée qui s'intègre parfaitement dans le paysage architectural de Tarascon."</p>
-                        </div>
-                        <div class="testimonial-author">
-                            <div class="author-info">
-                                <h4>Ahmed Benali</h4>
-                                <span>Président de l'association</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="testimonial-item scroll-animate">
-                        <div class="testimonial-content">
-                            <p>"En tant qu'architecte local, je suis fier de contribuer à ce projet qui respecte notre patrimoine tout en apportant une modernité nécessaire."</p>
-                        </div>
-                        <div class="testimonial-author">
-                            <div class="author-info">
-                                <h4>Marie Dubois</h4>
-                                <span>Architecte du projet</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="testimonial-item scroll-animate">
-                        <div class="testimonial-content">
-                            <p>"Cette mosquée sera un lieu de rassemblement et d'échange interculturel bénéfique pour toute la communauté tarasconnaise."</p>
-                        </div>
-                        <div class="testimonial-author">
-                            <div class="author-info">
-                                <h4>Jean Martin</h4>
-                                <span>Conseiller municipal</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section> -->
 
-        <!-- Section Galerie -->
-        <!-- <section id="galerie" class="section">
-            <div class="container">
-                <div class="section-header scroll-animate">
-                    <h2>Galerie Photos</h2>
-                </div>
-                
-                <div class="carousel-container scroll-animate" id="gallery-carousel">
-                    <div class="carousel-wrapper">
-                        <div class="carousel-track" id="carousel-track">
 
-                            <div class="gallery-item">
-                                <img src="src/images/entrepot.png"
-                                     alt="Vue extérieure de l'entrepôt de 700m² sur le terrain de la future mosquée"
-                                     data-full="src/images/photo1.jpg"
-                                     loading="lazy">
-                                <div class="gallery-overlay">
-                                    <h4>L'entrepôt (700&nbsp;m²)</h4>
-                                    <p>Bâtiment principal à transformer en salle de prière<br>Situé sur un terrain de 5&nbsp;900&nbsp;m²</p>
-                                </div>
-                            </div>
-                            <div class="gallery-item">
-                                <img src="src/images/maison.png"
-                                     alt="Maison existante de 400m² à rénover"
-                                     data-full="src/images/photo2.jpg"
-                                     loading="lazy">
-                                <div class="gallery-overlay">
-                                    <h4>Maison à rénover (400&nbsp;m²)</h4>
-                                    <p>Futur espace éducatif et social<br>À rénover pour la communauté</p>
-                                </div>
-                            </div>
-                            <div class="gallery-item">
-                                <img src="src/images/plan.png"
-                                     alt="Plan architectural du projet de mosquée sur 5 900m²"
-                                     data-full="src/images/photo3.jpg"
-                                     loading="lazy">
-                                <div class="gallery-overlay">
-                                    <h4>Plan du projet</h4>
-                                    <p>Conception architecturale sur 5&nbsp;900&nbsp;m²<br>Inclut entrepôt, maison et espaces extérieurs</p>
-                                </div>
-                            </div>
-                            
-                        </div>
-                    </div>
-                    
-               
-                    <button class="carousel-btn carousel-prev" id="carousel-prev" aria-label="Image précédente">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </button>
-                    
-                    <button class="carousel-btn carousel-next" id="carousel-next" aria-label="Image suivante">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </button>
-                    
-                 
-                    <div class="carousel-indicators" id="carousel-indicators"></div>
-                </div>
-            </div>
-        </section> -->
+        <!-- Galerie Photos -->
         <section id="galerie" class="carousel-section">
             <div class="container">
                 <h2 class="section-title">Galerie du projet</h2>
 
-                <div class="carousel-container">
-                    <button class="carousel-arrow carousel-prev" id="carousel-prev" aria-label="Image précédente">
+                <div class="carousel-container" id="carousel-container-galerie">
+                    <button class="carousel-arrow carousel-prev" id="carousel-prev-galerie"
+                        aria-label="Image précédente">
                         ‹
                     </button>
 
                     <div class="carousel-wrapper">
-                        <div class="carousel-track" id="carousel-track">
+                        <div class="carousel-track" id="carousel-track-galerie">
                             <div class="carousel-slide">
-                                <img src="https://images.pexels.com/photos/3679917/pexels-photo-3679917.jpeg"
-                                    alt="Architecture islamique moderne" class="carousel-image">
-                                <div class="slide-caption">Architecture islamique moderne</div>
+                                <img src="src/images/entrepot-6.jpg" alt="Vue aérienne du site" class="carousel-image">
+                                <div class="slide-caption">Vue aérienne du site</div>
                             </div>
                             <div class="carousel-slide">
-                                <img src="https://images.pexels.com/photos/6045320/pexels-photo-6045320.jpeg"
-                                    alt="Salle de prière spacieuse" class="carousel-image">
-                                <div class="slide-caption">Salle de prière spacieuse</div>
+                                <img src="src/images/entrepot-1.jpg" alt="Entrepôt - Vue extérieure"
+                                    class="carousel-image">
+                                <div class="slide-caption">Entrepôt - Vue extérieure</div>
                             </div>
                             <div class="carousel-slide">
-                                <img src="https://images.pexels.com/photos/16017663/pexels-photo-16017663.jpeg"
-                                    alt="Décoration traditionnelle" class="carousel-image">
-                                <div class="slide-caption">Décoration traditionnelle</div>
+                                <img src="src/images/entrepot-2.jpg" alt="Entrepôt - Vue intérieure"
+                                    class="carousel-image">
+                                <div class="slide-caption">Entrepôt - Vue intérieure</div>
                             </div>
                             <div class="carousel-slide">
-                                <img src="https://images.pexels.com/photos/4082341/pexels-photo-4082341.jpeg"
-                                    alt="Minaret élégant" class="carousel-image">
-                                <div class="slide-caption">Minaret élégant</div>
+                                <img src="src/images/entrepot-3.jpg" alt="Espace principal de l'entrepôt"
+                                    class="carousel-image">
+                                <div class="slide-caption">Espace principal de l'entrepôt</div>
                             </div>
                             <div class="carousel-slide">
-                                <img src="https://images.pexels.com/photos/19673072/pexels-photo-19673072.jpeg"
-                                    alt="Cour intérieure" class="carousel-image">
-                                <div class="slide-caption">Cour intérieure</div>
+                                <img src="src/images/entrepot-4.jpg" alt="Façade de l'entrepôt" class="carousel-image">
+                                <div class="slide-caption">Façade de l'entrepôt</div>
                             </div>
                             <div class="carousel-slide">
-                                <img src="https://images.pexels.com/photos/13959598/pexels-photo-13959598.jpeg"
-                                    alt="Vue d'ensemble" class="carousel-image">
+                                <img src="src/images/entrepot-5.jpg" alt="Cour attenante à l'entrepôt"
+                                    class="carousel-image">
+                                <div class="slide-caption">Maison</div>
+                            </div>
+
+                            <div class="carousel-slide">
+                                <img src="src/images/entrepot-7.jpg" alt="Vue d'ensemble du projet"
+                                    class="carousel-image">
                                 <div class="slide-caption">Vue d'ensemble du projet</div>
                             </div>
                         </div>
                     </div>
 
-                    <button class="carousel-arrow carousel-next" id="carousel-next" aria-label="Image suivante">
+                    <button class="carousel-arrow carousel-next" id="carousel-next-galerie" aria-label="Image suivante">
                         ›
                     </button>
                 </div>
 
-                <div class="carousel-dots" id="carousel-dots"></div>
+                <div class="carousel-dots" id="carousel-dots-galerie"></div>
             </div>
         </section>
 
@@ -574,7 +431,7 @@
         </div>
         <!-- ========================= CAROUSEL END ========================= -->
 
-       
+
 
         <!-- Section Contact -->
         <section id="contact" class="section">
@@ -599,7 +456,7 @@
                         <h3>Adresse</h3>
                         <p>
                             Association Mosquée de Tarascon<br>
-                            12 Avenue de la République<br>
+                            43 Rue Ledru Rollin<br>
                             13150 Tarascon
                         </p>
                     </div>
