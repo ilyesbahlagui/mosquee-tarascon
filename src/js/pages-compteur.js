@@ -103,9 +103,8 @@ class DonationCounter {
     
     updatePercentage(amount) {
         const percentage = Math.min((amount / this.target) * 100, 100);
-        
         setTimeout(() => {
-            this.elements.percentage.textContent = percentage.toFixed(1) + '%';
+            this.elements.percentage.textContent = percentage.toFixed(2) + '%';
         }, 1000);
     }
     
