@@ -1,3 +1,30 @@
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    text-align: center;
+}
+.contact-item {
+    margin-bottom: 1rem;
+    min-width: 260px;
+    max-width: 320px;
+    width: 100%;
+    box-sizing: border-box;
+}
+@media (max-width: 768px) {
+    .contact-info {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 1.5rem;
+    }
+    .contact-item {
+        margin-bottom: 1rem;
+        min-width: unset;
+    }
+}
 /* 
  * Components CSS - Composants UI du site Mosquée de Tarascon
  * 
@@ -1931,4 +1958,5 @@
     position: absolute;
     white-space: nowrap;
     width: 1px;
+    /* état d'origine restauré */
 }
