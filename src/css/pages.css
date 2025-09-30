@@ -306,7 +306,7 @@
     
     .hero {
         max-height: none;
-        padding: 2rem 0;
+        /* padding: 2rem 0; */
     }
     
     .hero-title {

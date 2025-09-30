@@ -20,16 +20,7 @@ body {
     background-color: var(--white);
 }
 
-/* Main content - ajustement pour le header fixe */
-main {
-    padding-top: 35px; /* Compense la nouvelle hauteur réduite du header fixe */
-}
 
-@media (max-width: 768px) {
-    main {
-        padding-top: 32px; /* Hauteur très réduite sur mobile */
-    }
-}
 
 /* Container principal */
 .container {
