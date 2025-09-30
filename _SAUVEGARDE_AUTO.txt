@@ -1,0 +1,1 @@
+Sauvegarde automatique avant suppression des fichiers inutiles.

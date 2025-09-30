@@ -1,0 +1,13 @@
+Fichiers CSS/JS à supprimer car non utilisés dans index.html :
+
+CSS :
+- components-date.css
+- pages-modif.css
+
+JS :
+- carousel-clean.js
+- gallery-clean.js
+- gallery-new.js
+- main-clean.js
+
+Ces fichiers ne sont pas référencés dans index.html et peuvent être supprimés pour alléger le projet.
